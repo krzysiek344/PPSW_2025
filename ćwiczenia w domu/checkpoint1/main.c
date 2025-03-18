@@ -1,15 +1,8 @@
 #include <LPC21xx.H>
 
 
-// sprawdzic kasztan sie nie przyczepi
-//      zastanowic sie nad '\n'
-
-
-
-
-
-//mozna lepiej ale wedlog instrukcji
-//-------------------------------funkcja1
+//-----------------------------------------------------------------------------funkcja1
+/*
 void CopyString(char pcSource[], char pcDestination[]){
 	
 		unsigned int uiLicznik;
@@ -19,16 +12,19 @@ void CopyString(char pcSource[], char pcDestination[]){
 				pcDestination[uiLicznik + 1] = pcSource[uiLicznik + 1];
 		}
 }
- 
-		
-		
+*/
+void CopyString(char pcSource[], char pcDestination[]){
+	
+		unsigned char ucSignCounter;
+	
+		for(ucSignCounter = 0; '\0' != pcSource[ucSignCounter]; ucSignCounter ++){
+				pcDestination[ucSignCounter] = pcSource[ucSignCounter];
+		}
+		pcDestination[ucSignCounter] = '\0';
+}
 
-
-
-
-
-//git
-//--------------------------------funkcja2
+//--------------------------------------------------------------------------------------funkcja2
+/*
 enum CompResult { DIFFERENT , EQUAL };
 
 enum CompResult eCompareString(char pcStr1[], char pcStr2[]){
@@ -42,30 +38,42 @@ enum CompResult eCompareString(char pcStr1[], char pcStr2[]){
     }
     return DIFFERENT;
 }
-
-
-//----------------------------------funkcja3
-/*
-void AppendString (char pcSourceStr[],char pcDestinationStr[]){
-	
-		unsigned int uiLicznik = 0;
-	
-		for(uiLicznik = 0; pcDestinationStr[uiLicznik] != '\0'; uiLicznik ++){}
-		CopyString(pcSourceStr, &pcDestinationStr[uiLicznik]);
-}
 */
+
+enum CompResult { DIFFERENT , EQUAL };
+
+enum CompResult eCompareString(char pcStr1[], char pcStr2[]){
+	
+		unsigned char ucSignCounter;
+	
+		for(ucSignCounter = 0; ('\0' != pcStr1[ucSignCounter]) || ('\0' != pcStr2[ucSignCounter]);ucSignCounter++){
+				
+				if(pcStr1[ucSignCounter] != pcStr2[ucSignCounter]){
+						return DIFFERENT;
+				}
+		}
+		return EQUAL;
+}
+
+//-----------------------------------------------------------------------------------------funkcja3
+/*
 void AppendString (char pcSourceStr[],char pcDestinationStr[]){
 	
 		while('\0' != *pcDestinationStr){pcDestinationStr ++;}
 		CopyString(pcSourceStr, pcDestinationStr);
 }
+*/
 
+void AppendString (char pcSourceStr[],char pcDestinationStr[]){
+	
+		unsigned char ucSignCounter;
+	
+		for(ucSignCounter = 0; '\0' != pcDestinationStr[ucSignCounter]; ucSignCounter++){}
+		CopyString(pcSourceStr, pcDestinationStr + ucSignCounter);
+}
 
-
-
-
-//git
-//-----------------------------------funkcjia4
+//-----------------------------------------------------------------------------------------------funkcjia4
+/*
 void ReplaceCharactersInString(char pcString[], char cOldChar, char cNewChar){
 	
 		while('\0' != *pcString){
@@ -75,85 +83,24 @@ void ReplaceCharactersInString(char pcString[], char cOldChar, char cNewChar){
 				pcString++;		
 		}	
 }
-//-------------------------------------------------------------------------------------------
+*/
 
-//------------------------------------------------------------------------------------------
-
-
-void UIntToHexStr (unsigned int uiValue, char pcStr[]){
-    
-    char cLicznik;
-    char cBufor;
-    
-    pcStr[0] = '0';
-    pcStr[1] = 'x';
-    
-    for(cLicznik = 0; cLicznik < 4; cLicznik ++){
-        
-        cBufor = (((uiValue >> (12 - 4 * cLicznik))) & 0xF);
-        
-        if(cBufor < 10){
-            pcStr[2 + cLicznik] = ('0' + cBufor);
-        }
-        else{
-            pcStr[2 + cLicznik] = ('A' + (cBufor-10));
-        }
-    }
-    pcStr[6] = '\0';
+void ReplaceCharactersInString(char pcString[],char cOldChar,char cNewChar){
+	
+		unsigned char ucSignCounter;
+	
+		for(ucSignCounter = 0; '\0' != pcString[ucSignCounter]; ucSignCounter++){
+			
+				if(cOldChar == pcString[ucSignCounter]){
+						pcString[ucSignCounter] = cNewChar;
+				}
+		}
 }
-
-
-
-
-enum Result{ OK, ERROR };
-
-enum Result eHexStringToUInt(char pcStr[],unsigned int *puiValue){
-    
-    char          cDlugoscCiagu;
-    char          cBufor;
-    unsigned int  uiPrzeliczenie = 0;
-    
-    if(!puiValue || !pcStr) {return ERROR;}
-    if('0' != pcStr[0] || 'x' != pcStr[1] || '\0' == pcStr[2]) {return ERROR;}
-    
-    /*
-    while('\0' != pcStr[cLicznik]){
-        
-        if(6 <= cLicznik) {return ERROR;}
-        cLicznik ++;
-    }*/
-    
-    for(cDlugoscCiagu = 2; '\0' != pcStr[cDlugoscCiagu]; cDlugoscCiagu ++){
-        
-        if(6 <= cDlugoscCiagu) {return ERROR;}
-        
-        cBufor = pcStr[cDlugoscCiagu];
-        
-        if('0' <= cBufor && '9' >= cBufor){
-            uiPrzeliczenie = (uiPrzeliczenie << 4) | (cBufor - 48);
-        }
-        else if('A' <= cBufor && 'F' >= cBufor){
-            uiPrzeliczenie = (uiPrzeliczenie << 4) | (cBufor - 55);
-        }
-        else{
-            return ERROR;
-        }
-    }
-    
-    *puiValue = uiPrzeliczenie;
-    return OK;
-}
-
-
-
-
-
-
-
-
 
 
 
 int main(){
+
+
 	
 }
