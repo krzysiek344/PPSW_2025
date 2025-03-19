@@ -3,14 +3,16 @@
 //**************************************************************
 
 #include <LPC21xx.H>
+
 #define LED0_bm (1 << 16)
 #define LED1_bm (1 << 17)
 #define LED2_bm (1 << 18)
 #define LED3_bm (1 << 19)
-#define Sw0_bm  (1 << 4)
-#define Sw1_bm  (1 << 6)
-#define Sw2_bm  (1 << 5)
-#define Sw3_bm  (1 << 7)
+
+#define S0_bm  (1 << 4)
+#define S1_bm  (1 << 6)
+#define S2_bm  (1 << 5)
+#define S3_bm  (1 << 7)
 
 enum KeyboardState {RELASED, BUTTON_0, BUTTON_1, BUTTON_2, BUTTON_3};
 enum Direction {LEFT, RIGHT};
@@ -64,21 +66,21 @@ void LedOn(unsigned char ucLedIndeks){
 
 void KeyboardInit(void){
 
-		IO0DIR= IO0DIR & ~(Sw0_bm | Sw1_bm | Sw2_bm | Sw3_bm);
+		IO0DIR= IO0DIR & ~(S0_bm | S1_bm | S2_bm | S3_bm);
 }
 
 enum KeyboardState eKeyboardRead(void){
 		
-		if(0 == (Sw0_bm & IO0PIN)){
+		if(0 == (S0_bm & IO0PIN)){
 				return BUTTON_0;
 		}
-		else if(0 == (Sw1_bm & IO0PIN)){
+		else if(0 == (S1_bm & IO0PIN)){ //                                  niewcisniete   0x40    wcisniete- 0x0
 				return BUTTON_1;
 		}
-		else if(0 == (Sw2_bm & IO0PIN)){
+		else if(0 == (S2_bm & IO0PIN)){ //																	niewcisniete   0x20    wcisniete- 0x0
 				return BUTTON_2;
 		}
-		else if(0 == (Sw3_bm & IO0PIN)){
+		else if(0 == (S3_bm & IO0PIN)){
 				return BUTTON_3;
 		}
 		else{
@@ -86,19 +88,21 @@ enum KeyboardState eKeyboardRead(void){
 		}
 }
 
-
 void LedStep(enum Direction LedDirection){
 	
 		static unsigned char ucLedPosition = 0;
 	
 		if(LEFT == LedDirection){
-				ucLedPosition = (ucLedPosition + 1) % 4;
-				LedOn(ucLedPosition);
+			
+				ucLedPosition = (ucLedPosition + 1);
 		}
 		else if(RIGHT == LedDirection){
-				ucLedPosition = (ucLedPosition + 3) % 4;
-				LedOn(ucLedPosition);
+			
+				ucLedPosition = (ucLedPosition - 1);
 		}
+		
+		ucLedPosition = ucLedPosition % 4;
+		LedOn(ucLedPosition);
 }
 
 void LedStepLeft(void){
@@ -115,54 +119,25 @@ void LedStepRight(void){
 	
 int main(){
 	
-		char cBufor = 0;
-	
 		LedInit();
     KeyboardInit();
 	
     while(1){
-				/*
-				Delay(200);
+				
+				Delay(150);
 				switch(eKeyboardRead()){
 						
 						case BUTTON_1:
-								LedStep(RIGHT);
+								LedStepRight();
 								break;
 						
 						case BUTTON_2:
-								LedStep(LEFT);
-								break;
-						default:
-								break;
-				}*/
-				switch(eKeyboardRead()){
-						
-						case(BUTTON_1):
-							
-								if(0 == cBufor){
-										cBufor = 1;
-										LedStep(RIGHT);
-										Delay(50);
-								}
-								break;
-						
-						case(BUTTON_2):
-								
-								if(0 == cBufor){
-										cBufor = 1;
-										LedStep(LEFT);
-										Delay(50);
-								}
-								break;
-						
-						case(RELASED):
-								cBufor = 0;
+								LedStepLeft();
 								break;
 						
 						default:
 								break;
 				}
-					
-			}
+		}
 }
 	
