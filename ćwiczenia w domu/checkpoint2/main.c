@@ -32,7 +32,6 @@ enum Result eHexStringToUInt(char pcStr[],unsigned int *puiValue){
     
     unsigned char uucCurrentCharacter;
     unsigned char ucCurrentCharacter;
-    //zapytac sie goscia czy ma byc sprawdzenie czy wskazniki sa zerowe
 	/*
     if(!puiValue || !pcStr){
         return ERROR;
