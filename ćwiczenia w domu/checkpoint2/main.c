@@ -32,18 +32,18 @@ enum Result eHexStringToUInt(char pcStr[],unsigned int *puiValue){
     unsigned char ucCharacterCounter; 
     unsigned char ucCurrentCharacter; 
    
-    if('0' != pcStr[0] || 'x' != pcStr[1] || '\0' == pcStr[2]){ 
+    if(('0' != pcStr[0]) || ('x' != pcStr[1]) || ('\0' == pcStr[2])){ 
         return ERROR; 
     } 
    
     *puiValue = 0; 
       
-    for(ucCharacterCounter = 2; ucCharacterCounter <= 6; ucCharacterCounter ++){ 
-         
-        if('\0' == pcStr[ucCharacterCounter]){ 
-            return OK; 
-        } 
-         
+		for(ucCharacterCounter = 2; '\0' != pcStr[ucCharacterCounter]; ucCharacterCounter ++){  
+        
+				if(6 <= ucCharacterCounter){
+						return ERROR;
+				}
+			
         ucCurrentCharacter = pcStr[ucCharacterCounter]; 
          
         if(('0' <= ucCurrentCharacter) && ('9' >= ucCurrentCharacter)){ 
@@ -55,10 +55,10 @@ enum Result eHexStringToUInt(char pcStr[],unsigned int *puiValue){
         else{ 
             return ERROR; 
         } 
-    *puiValue <<= 4; 
+				*puiValue <<= 4; 
         *puiValue |= ucCurrentCharacter; 
     } 
-    return ERROR; 
+    return OK; 
 } 
  
  
@@ -72,5 +72,17 @@ void AppendUIntToString (unsigned int uiValue, char pcDestinationStr[]){
 
 int main(){
 	
+		char hex1[] = "0xA";
+		char hex2[] = "0xBC3F";
+		char hex3[] = "0xFF1FF";
+	
+		int test;
+	  
+		unsigned int value;
+	
+		test = eHexStringToUInt(hex1, &value);
+		test = eHexStringToUInt(hex2, &value);
+		test = eHexStringToUInt(hex3, &value);
+		
 }
 

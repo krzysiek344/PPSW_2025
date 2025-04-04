@@ -4,29 +4,8 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\kmus\Desktop\PPSW_2025\æwiczenia w domu\checkpoint2\konwersje.uvproj
-Project File Date:  04/02/2025
+Project File Date:  04/04/2025
 
 <h2>Output:</h2>
-Build target 'Target 1'
-assembling Startup.s...
-compiling main.c...
-main.c(71): warning:  #1-D: last line of file ends without a newline
-linking...
-.\konwersje.axf: Error: L6218E: Undefined symbol main (referred from rtentry2.o).
-".\konwersje.axf" - 1 Errors, 1 Warning(s).
-Target not created
-Rebuild target 'Target 1'
-assembling Startup.s...
-compiling main.c...
-linking...
-.\konwersje.axf: Error: L6218E: Undefined symbol main (referred from rtentry2.o).
-".\konwersje.axf" - 1 Errors, 0 Warning(s).
-Target not created
-Rebuild target 'Target 1'
-assembling Startup.s...
-compiling main.c...
-linking...
-Program Size: Code=1072 RO-data=16 RW-data=0 ZI-data=1256  
-".\konwersje.axf" - 0 Errors, 0 Warning(s).
 Clean started: Project: 'konwersje'
    deleting intermediate output files for target 'Target 1'
