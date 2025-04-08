@@ -1,15 +1,57 @@
+#include <LPC21xx.H>
+
 #include "led.h"
 #include "timer_interrupts.h"
 #include "keyboard.h"
 
+#define DETECTOR_bm (1 << 10)
+
+enum DetectorState {INACTIVE, ACTIVE};
+
+enum ServoState {CALLIB, IDLE, IN_PROGRESS};
+
+struct Servo{
+	
+		enum ServoState eState;
+		unsigned int uiCurrentPosition; 
+		unsigned int uiDesiredPosition;
+};
+
+struct Servo sServo;
+
+
+void DetectorInit(){
+	
+		IO0DIR= IO0DIR & (~(DETECTOR_bm));
+}
+
+enum DetectorState eReadDetector(){
+	
+		if(0 == (DETECTOR_bm & IO0PIN)){
+				return ACTIVE;
+		}
+		else{
+				return INACTIVE;
+		}
+}
 
 void Automat(){
 		
-		enum LedState {STATE_STOP, STATE_RIGHT, STATE_LEFT};
-		static enum LedState seLedState = STATE_STOP;
+		enum LedState {STATE_STOP, STATE_RIGHT, STATE_LEFT, CALLIB};
+		static enum LedState seLedState = CALLIB;
 
 		switch(seLedState){
-					
+				
+				case CALLIB:
+						if(INACTIVE == eReadDetector()){
+								LedStepLeft();
+								seLedState = CALLIB;
+						}
+						else{
+								seLedState = STATE_STOP;
+						}
+						break;
+				
 				case STATE_RIGHT:
 						if(BUTTON_1 != eKeyboardRead()){
 								LedStepRight();
@@ -55,6 +97,7 @@ int main (){
 		Timer0Interrupts_Init(20000, &Automat);
 		LedInit();
 		KeyboardInit();
+		DetectorInit();
 
 		while(1){
 			
