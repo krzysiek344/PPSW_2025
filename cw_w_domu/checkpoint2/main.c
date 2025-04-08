@@ -68,21 +68,22 @@ void AppendUIntToString (unsigned int uiValue, char pcDestinationStr[]){
      
     for(ucCharacterCounter = 0; '\0' != pcDestinationStr[ucCharacterCounter]; ucCharacterCounter ++){} 
     UIntToHexStr(uiValue, &pcDestinationStr[ucCharacterCounter]); 
-} 
+}
+
+
 
 int main(){
+	
+		enum Result eResult;
+		unsigned int value;
 	
 		char hex1[] = "0xA";
 		char hex2[] = "0xBC3F";
 		char hex3[] = "0xFF1FF";
 	
-		int test;
-	  
-		unsigned int value;
-	
-		test = eHexStringToUInt(hex1, &value);
-		test = eHexStringToUInt(hex2, &value);
-		test = eHexStringToUInt(hex3, &value);
+		eResult = eHexStringToUInt(hex1, &value);
+		eResult = eHexStringToUInt(hex2, &value);
+		eResult = eHexStringToUInt(hex3, &value);
 		
 }
 

@@ -1,5 +1,4 @@
 #include "led.h"
-#include "keyboard.h"
 #include "timer.h"
 
 int main(){
@@ -13,6 +12,6 @@ int main(){
 				LedStepRight();
 				
 				WaitOnTimer0Match0();
-			  //WaitOnTimer0(1000000);
+			  //WaitOnTimer0(300000);
 		}
 }

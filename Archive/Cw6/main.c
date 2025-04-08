@@ -29,6 +29,7 @@ int main(){
 						case STATE_RIGHT:
 								if(BUTTON_1 != eKeyboardRead()){
 										LedStepRight();
+										eLedState = STATE_RIGHT;
 								}
 								else{
 										eLedState = STATE_STOP;
@@ -38,6 +39,7 @@ int main(){
 						case STATE_LEFT:
 								if(BUTTON_1 != eKeyboardRead()){
 										LedStepLeft();
+										eLedState = STATE_LEFT;
 								}
 								else{
 										eLedState = STATE_STOP;
