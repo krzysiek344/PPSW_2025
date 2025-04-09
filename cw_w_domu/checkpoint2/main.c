@@ -75,15 +75,20 @@ void AppendUIntToString (unsigned int uiValue, char pcDestinationStr[]){
 int main(){
 	
 		enum Result eResult;
-		unsigned int value;
+		unsigned int uiValue;
 	
 		char hex1[] = "0xA";
 		char hex2[] = "0xBC3F";
 		char hex3[] = "0xFF1FF";
+		char hex4[] = "TrallaLala";
+		char hex5[] = "0x";
 	
-		eResult = eHexStringToUInt(hex1, &value);
-		eResult = eHexStringToUInt(hex2, &value);
-		eResult = eHexStringToUInt(hex3, &value);
+	
+		eResult = eHexStringToUInt(hex1, &uiValue);
+		eResult = eHexStringToUInt(hex2, &uiValue);
+		eResult = eHexStringToUInt(hex3, &uiValue);
+		eResult = eHexStringToUInt(hex4, &uiValue);
+		eResult = eHexStringToUInt(hex5, &uiValue);
 		
 }
 

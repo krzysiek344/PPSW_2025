@@ -1,6 +1,7 @@
 #include "led.h"
 #include "keyboard.h"
 
+
 void Delay(unsigned int czas){
 	
 		unsigned int uiLicznikCykli1;
@@ -27,30 +28,30 @@ int main(){
 				switch(eLedState){
 					
 						case STATE_RIGHT:
-								if(BUTTON_1 != eKeyboardRead()){
+								if(eKeyboardRead() == BUTTON_1){
+										eLedState = STATE_STOP;
+								}
+								else{
 										LedStepRight();
 										eLedState = STATE_RIGHT;
 								}
-								else{
-										eLedState = STATE_STOP;
-								}
-								break;
+								break;								
 								
 						case STATE_LEFT:
-								if(BUTTON_1 != eKeyboardRead()){
-										LedStepLeft();
-										eLedState = STATE_LEFT;
+								if(eKeyboardRead() == BUTTON_1){
+										eLedState = STATE_STOP;
 								}
 								else{
-										eLedState = STATE_STOP;
+										LedStepLeft();
+										eLedState = STATE_LEFT;
 								}
 								break;
 						
 						case STATE_STOP:
-								if(BUTTON_0 == eKeyboardRead()){
+								if(eKeyboardRead() == BUTTON_0){
 										eLedState = STATE_LEFT;
 								}
-								else if(BUTTON_2 == eKeyboardRead()){
+								else if(eKeyboardRead() == BUTTON_2){
 										eLedState = STATE_RIGHT;
 								}
 								else{
