@@ -15,8 +15,10 @@ void Delay(unsigned int czas){
 
 int main(){
 	
-		enum LedState{STATE_STOP, STATE_RIGHT, STATE_LEFT};
+		enum LedState{STATE_STOP, STATE_RIGHT, STATE_LEFT, STATE_WIPER};
 		enum LedState eLedState = STATE_RIGHT;
+
+		unsigned char ucWiperCounter = 0;
 
 		LedInit();
 		KeyboardInit();
@@ -41,6 +43,11 @@ int main(){
 								if(eKeyboardRead() == BUTTON_1){
 										eLedState = STATE_STOP;
 								}
+								else if(eKeyboardRead() == BUTTON_3){
+									
+										eLedState = STATE_WIPER;
+										ucWiperCounter = 0;
+								}
 								else{
 										LedStepLeft();
 										eLedState = STATE_LEFT;
@@ -59,12 +66,31 @@ int main(){
 								}
 								break;
 								
+						case STATE_WIPER:
+								if(ucWiperCounter == 4){
+									
+										eLedState = STATE_RIGHT;
+								}
+								else{
+		
+										if((ucWiperCounter % 2) == 0){
+												LedStepRight();
+										}
+										else{
+												LedStepLeft();
+										}
+										ucWiperCounter ++;
+										eLedState = STATE_WIPER;
+								}
+								break;
+								
 						default:
 								break;
+						
 				}
 		}
 }		
-				
+		
 				//ZADANIE 3
 				/*
 				Delay(300);

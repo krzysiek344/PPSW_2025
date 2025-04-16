@@ -2,6 +2,8 @@
 2 zestaw funkcji- 9 kwiecien
 
 GPIO- 19 marzec
-Moduły- 2 kwiecień
+Moduly- 2 kwiecien
+Automaty- 16 kwiecien
+Timery- 16 kwiecien
 
-git- 2 kwiecień
+git- 2 kwiecien
