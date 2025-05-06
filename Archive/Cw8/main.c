@@ -11,36 +11,36 @@ void Automat(){
 		switch(seLedState){
 					
 				case STATE_RIGHT:
-						if(BUTTON_1 != eKeyboardRead()){
-								LedStepRight();
-								seLedState = STATE_RIGHT;
-						}
-						else{
-								seLedState = STATE_STOP;
-						}
-						break;
+						if(eKeyboardRead() == BUTTON_1){
+										seLedState = STATE_STOP;
+								}
+								else{
+										LedStepRight();
+										seLedState = STATE_RIGHT;
+								}
+								break;
 								
 				case STATE_LEFT:
-						if(BUTTON_1 != eKeyboardRead()){
-								LedStepLeft();
-								seLedState = STATE_LEFT;
-						}
-						else{
-								seLedState = STATE_STOP;
-						}
-						break;
+						if(eKeyboardRead() == BUTTON_1){
+										seLedState = STATE_STOP;
+								}
+								else{
+										LedStepLeft();
+										seLedState = STATE_LEFT;
+								}
+								break;
 						
 				case STATE_STOP:
-						if(BUTTON_0 == eKeyboardRead()){
-								seLedState = STATE_LEFT;
-						}
-						else if(BUTTON_2 == eKeyboardRead()){
-								seLedState = STATE_RIGHT;
-						}
-						else{
-								seLedState = STATE_STOP;
-						}
-						break;
+						if(eKeyboardRead() == BUTTON_0){
+										seLedState = STATE_LEFT;
+								}
+								else if(eKeyboardRead() == BUTTON_2){
+										seLedState = STATE_RIGHT;
+								}
+								else{
+										seLedState = STATE_STOP;
+								}
+								break;
 								
 				default:
 								break;
