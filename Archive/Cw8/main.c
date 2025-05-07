@@ -59,6 +59,10 @@ int main (){
 		while(1){
 			
 				iMainLoopCtr++;
+				iMainLoopCtr++;
+				iMainLoopCtr++;
+				iMainLoopCtr++;
+				iMainLoopCtr++;
 		}
 }
 

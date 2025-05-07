@@ -4,8 +4,12 @@
 
 int main (){
 	
-		ServoInit(50);
+		ServoInit(10);
+	  ServoGoTo(24);
+	  ServoGoTo(12);
+	
 		KeyboardInit();
+	
 
 		while(1){
 				
