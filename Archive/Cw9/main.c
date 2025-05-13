@@ -5,8 +5,9 @@
 int main (){
 	
 		ServoInit(10);
-	  ServoGoTo(24);
-	  ServoGoTo(12);
+	
+	 ServoGoTo(24);
+	 ServoGoTo(12);
 	
 		KeyboardInit();
 	

@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\kmus\Desktop\PPSW_2025\cw_w_domu\checkpoint3\dekodowanie.uvproj
+Project File Date:  05/11/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling main.c...
+compiling konwersje.c...
+compiling dekod.c...
+linking...
+Program Size: Code=1872 RO-data=32 RW-data=80 ZI-data=1280  
+".\dekodowanie.axf" - 0 Errors, 0 Warning(s).
+Clean started: Project: 'dekodowanie'
+   deleting intermediate output files for target 'Target 1'

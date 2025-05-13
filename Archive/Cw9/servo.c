@@ -65,6 +65,7 @@ void Automat(void){
 								sServo.uiDesiredPosition = 0;
 								sServo.eState = IDLE;
 						}
+						break;
 						
 				case IDLE:
 						if(sServo.uiCurrentPosition != sServo.uiDesiredPosition){
@@ -105,6 +106,8 @@ void ServoInit(unsigned int uiServoFrequency){
 		DetectorInit();
 	
 		Timer0Interrupts_Init((1000000/uiServoFrequency), &Automat);
+	
+		while(sServo.eState != IDLE){}  //*
 }
 
 
@@ -117,4 +120,5 @@ void ServoCallib(void){
 void ServoGoTo(unsigned int uiPosition){
 	
 		sServo.uiDesiredPosition = uiPosition;
+		while(sServo.uiCurrentPosition != sServo.uiDesiredPosition){}          //*
 }
