@@ -160,6 +160,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>asToken</ItemText>
         </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>ucTokenNr</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -223,7 +228,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>229</TopLine>
+      <TopLine>226</TopLine>
       <CurrentLine>239</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Startup.s</PathWithFileName>
@@ -237,10 +242,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>11</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>13</CurrentLine>
+      <CurrentLine>7</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -269,10 +274,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>6</ColumnNumber>
+      <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>129</TopLine>
-      <CurrentLine>166</CurrentLine>
+      <TopLine>38</TopLine>
+      <CurrentLine>45</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\dekod.c</PathWithFileName>
       <FilenameWithoutPath>dekod.c</FilenameWithoutPath>

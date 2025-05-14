@@ -2,12 +2,10 @@
 #include "dekod.h"
 
 
-char test[] = " load 86609 tralala  ";
-char test1[] = "load 0x76AB reset";
+char cTest[] = "load 0x0A70 teraz";
 
 int main(){
 	
-	DecodeMsg(test);
-	DecodeMsg(test1);
+	DecodeMsg(cTest);
 	
 }
