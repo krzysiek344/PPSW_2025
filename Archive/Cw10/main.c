@@ -16,16 +16,15 @@ int main(){
 		
 		switch(cOdebranyZnak){ 
 		
-		case 'c':
+		case '\n':
 			ServoCallib();
 			break;
 			
-	  case '1':
-			ServoGoTo(sServo.uiCurrentPosition + 12);
-			cOdebranyZnak = '\0';
+	  case '\r':
+			ServoGoTo(12);
 			break;
 		
-	  case '2':
+	  case '\0':
 			ServoGoTo(24);
 			break;
 		
