@@ -3,7 +3,14 @@
 #include "keyboard.h"
 
 int main (){
-	
+
+//*****************************************************************
+//
+// JAK COS TEGO NIE ODDAWAJCIE DOKLADNIE W TAKIEJ FORMIE, 
+// NORMALNIE TAKIE COS JAK W LINI 16 I 17  NIE BEDZIE DZIALAC I WAM BEDZIE KAZAL 
+// TO NAPRAWIC, 
+//
+//*****************************************************************
 		ServoInit(10);
 	
 	 ServoGoTo(24);

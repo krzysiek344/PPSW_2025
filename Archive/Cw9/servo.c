@@ -99,6 +99,9 @@ void Automat(void){
 		}
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+//
+//   !!! PRZECZYTAJ TO CO JEST W MAIN.C !!!
 
 void ServoInit(unsigned int uiServoFrequency){
 	
